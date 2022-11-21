@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        h1 {color: darkorchid; text-align: center}
+    </style>
+    <meta charset="UTF-8">
+    <title>Add Planned Appointment</title>
+</head>
+<body>
+
+<h1>Add a planned appointment</h1>
+
+<form action="../ServletController" method = "POST">
+    <label for="car_id">Car id</label><br>
+    <input type="text" id="car_id" name="field_car_id">
+    <br><br>
+
+    <label for="time">Appointment time</label><br>
+    <input type="datetime-local" id="time" name="field_time">
+    <br><br>
+
+    <label for="select_service_id">Select a service</label><br>
+    <select name="select_service" id="select_service_id">
+        <option value="1">Oil filter change</option>
+        <option value="2">Wiper blades</option>
+        <option value="3">Spark plug replacement</option>
+        <option value="4">Air filter change</option>
+        <option value="5">Oxygen sensor replacement</option>
+        <option value="6">Brakes replacement</option>
+        <option value="7">Transmission inspection</option>
+        <option value="8">Fuel cap tightening</option>
+    </select>
+    <br><br>
+
+    <input type="hidden" name="action" value="Create a planned appointment">
+    <input type="submit" value="Submit">
+</form>
+<br><br>
+
+<a href = "http://localhost:8080/Garage_MS-1.0-SNAPSHOT">Go back</a>
+
+</body>
+</html>
