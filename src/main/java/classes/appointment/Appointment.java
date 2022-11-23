@@ -11,7 +11,7 @@ public abstract class Appointment
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int m_id;
+    private long m_id;
 
     @ManyToOne
     @JoinColumn(name = "car_id", nullable = true)
@@ -30,11 +30,11 @@ public abstract class Appointment
         m_service = service;
     }
 
-    public int getId() {
+    public long getId() {
         return m_id;
     }
 
-    public void setId(int id) { this.m_id = id; }
+    public void setId(long id) { this.m_id = id; }
 
     public Car getCar() {
         return m_car;
@@ -51,7 +51,8 @@ public abstract class Appointment
     public void setService(Service service) { this.m_service = service; }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -63,14 +64,5 @@ public abstract class Appointment
 //        if (appointmentTime != null ? !appointmentTime.equals(that.appointmentTime) : that.appointmentTime != null) return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = m_id;
-        //result = 31 * result + (carId != null ? carId.hashCode() : 0);
-        result = 31 * result + (m_service != null ? m_service.hashCode() : 0);
-//        result = 31 * result + (appointmentTime != null ? appointmentTime.hashCode() : 0);
-        return result;
     }
 }

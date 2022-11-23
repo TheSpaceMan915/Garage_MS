@@ -12,7 +12,7 @@ public class Service
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int m_id;
+    private long m_id;
 
     @Basic
     @Column(name = "name")
@@ -30,11 +30,11 @@ public class Service
 
 
 
-    public int getId() {
+    public long getId() {
         return m_id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.m_id = id;
     }
 
@@ -64,7 +64,8 @@ public class Service
 
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -75,16 +76,5 @@ public class Service
         if (m_name != null ? !m_name.equals(service.m_name) : service.m_name != null) return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = m_id;
-        result = 31 * result + (m_name != null ? m_name.hashCode() : 0);
-        temp = Double.doubleToLongBits(m_price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
     }
 }

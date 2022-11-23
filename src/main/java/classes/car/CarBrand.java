@@ -10,7 +10,7 @@ public class CarBrand
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int m_id;
+    private long m_id;
 
     @Basic
     @Column(name = "name")
@@ -19,16 +19,14 @@ public class CarBrand
     @OneToMany(mappedBy = "m_brand", cascade = CascadeType.ALL)
     private Set<Car> m_set_cars;
 
-    //create constructors for all the classes
+
     public CarBrand() {}
 
-    //public CarBrand()
-
-    public int getId() {
+    public long getId() {
         return m_id;
     }
 
-    public void setId(int m_id) {
+    public void setId(long m_id) {
         this.m_id = m_id;
     }
 
@@ -41,7 +39,8 @@ public class CarBrand
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -51,12 +50,5 @@ public class CarBrand
         if (m_name != null ? !m_name.equals(that.m_name) : that.m_name != null) return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = m_id;
-        result = 31 * result + (m_name != null ? m_name.hashCode() : 0);
-        return result;
     }
 }

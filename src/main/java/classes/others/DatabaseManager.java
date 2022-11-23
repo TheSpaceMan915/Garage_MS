@@ -38,7 +38,7 @@ public class DatabaseManager
     }
 
     //finding an object by id, a utility method
-    public static <T> T findById(Class<T> type, int id)
+    public static <T> T findById(Class<T> type, long id)
     {
         EntityManager manager = m_factory.createEntityManager();
         T object = manager.find(type,id);
@@ -49,7 +49,7 @@ public class DatabaseManager
 
 
     //deleting by id, a utility method
-    public static boolean deleteById(Class<?> type, int id)
+    public static boolean deleteById(Class<?> type, long id)
     {
         EntityManager manager = m_factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();
@@ -79,7 +79,7 @@ public class DatabaseManager
     }
 
 
-    public static void updateServiceState(int current_appointment_id, int service_state_id)
+    public static void updateServiceState(long current_appointment_id, long service_state_id)
     {
         EntityManager manager = m_factory.createEntityManager();
         EntityTransaction transaction = manager.getTransaction();

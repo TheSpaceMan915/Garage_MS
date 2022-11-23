@@ -33,7 +33,8 @@ public class Client extends Person
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -46,13 +47,4 @@ public class Client extends Person
 
         return true;
     }
-
-/*    @Override
-    public int hashCode() {
-        int result = this.getId();
-        result = 31 * result + (this.getFirstName() != null ? this.getFirstName().hashCode() : 0);
-        result = 31 * result + (this.getSecondName() != null ? this.getSecondName().hashCode() : 0);
-        result = 31 * result + (m_phone_number != null ? m_phone_number.hashCode() : 0);
-        return result;
-    }*/
 }

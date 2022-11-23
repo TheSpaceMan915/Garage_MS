@@ -12,7 +12,7 @@ public class ServiceState
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int m_id;
+    private long m_id;
 
     @Basic
     @Column(name = "name")
@@ -23,9 +23,9 @@ public class ServiceState
     private Set<CurrentAppointment> m_set_current_appointments;
 
 
-    public int getId() { return m_id; }
+    public long getId() { return m_id; }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.m_id = id;
     }
 
@@ -38,7 +38,8 @@ public class ServiceState
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -48,12 +49,5 @@ public class ServiceState
         if (m_name != null ? !m_name.equals(that.m_name) : that.m_name != null) return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = m_id;
-        result = 31 * result + (m_name != null ? m_name.hashCode() : 0);
-        return result;
     }
 }

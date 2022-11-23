@@ -29,8 +29,8 @@ public class Mechanic extends Employee
     public static void changeServiceState(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the data from the page
-        int input_current_appointment_id = Integer.parseInt(request.getParameter("field_current_appointment_id"));
-        int input_service_state_id = Integer.parseInt(request.getParameter("select_service_state"));
+        long input_current_appointment_id = Long.parseLong(request.getParameter("field_current_appointment_id"));
+        long input_service_state_id = Long.parseLong(request.getParameter("select_service_state"));
 
 
         //changing the state of the service

@@ -15,7 +15,7 @@ public class Car
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int m_id;
+    private long m_id;
 
     @Basic
     @Column(name = "plate_number")
@@ -55,9 +55,9 @@ public class Car
         m_fuel = fuel;
     }
 
-    public int getId() { return m_id; }
+    public long getId() { return m_id; }
 
-    public void setId(int m_id) { this.m_id = m_id; }
+    public void setId(long m_id) { this.m_id = m_id; }
 
     public String getPlateNumber() { return m_plate_number; }
 

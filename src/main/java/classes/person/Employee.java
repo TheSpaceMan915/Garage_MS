@@ -26,7 +26,8 @@ public abstract class Employee extends Person
     public void setPasswordHashcode(long m_password_hashcode) { this.m_password_hashcode = m_password_hashcode; }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -38,15 +39,5 @@ public abstract class Employee extends Person
         if (m_login != null ? !m_login.equals(employee.m_login) : employee.m_login != null) return false;
         //if (m_password_hashcode != null ? !m_password_hashcode.equals(employee.m_password_hashcode) : employee.m_password_hashcode != null) return false;
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = this.getId();
-        result = 31 * result + (this.getFirstName() != null ? this.getFirstName().hashCode() : 0);
-        result = 31 * result + (this.getSecondName() != null ? this.getSecondName().hashCode() : 0);
-        result = 31 * result + (m_login != null ? m_login.hashCode() : 0);
-        //result = 31 * result + (m_password_hashcode != null ? m_password_hashcode.hashCode() : 0);
-        return result;
     }
 }

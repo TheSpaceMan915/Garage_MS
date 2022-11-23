@@ -8,7 +8,7 @@ public abstract class Person
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int m_id;
+    private long m_id;
 
     @Basic
     @Column(name = "first_name")
@@ -27,9 +27,9 @@ public abstract class Person
         m_second_name = second_name;
     }
 
-    public int getId() { return m_id; }
+    public long getId() { return m_id; }
 
-    public void setId(int id) { this.m_id = id; }
+    public void setId(long id) { this.m_id = id; }
 
     public String getFirstName() { return m_first_name; }
 
@@ -51,14 +51,6 @@ public abstract class Person
         if (m_second_name != null ? !m_second_name.equals(person.m_second_name) : person.m_second_name != null) return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = m_id;
-        result = 31 * result + (m_first_name != null ? m_first_name.hashCode() : 0);
-        result = 31 * result + (m_second_name != null ? m_second_name.hashCode() : 0);
-        return result;
     }
 }
 

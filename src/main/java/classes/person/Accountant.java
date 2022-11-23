@@ -20,7 +20,7 @@ public class Accountant extends Employee
     public static void calculateServicesCost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the client id
-        int input_car_id = Integer.parseInt(request.getParameter("field_car_id"));
+        long input_car_id = Long.parseLong(request.getParameter("field_car_id"));
 
         //getting the list of all current appointments
         List<CurrentAppointment> list_appointments = DatabaseManager.getCurrentAppointments();
@@ -42,8 +42,11 @@ public class Accountant extends Employee
             {
                 if (service_state.getName().equals("Finished"))
                 {
-                    //should delete the current appointment here?
+                    //summing the cost of services
                     sum += service.getPrice();
+
+                    //deleting the finished appointment
+                    DatabaseManager.deleteById(CurrentAppointment.class,appointment.getId());
                 }
             }
         }

@@ -47,8 +47,8 @@ public class Manager extends Employee
     public static void addPlannedAppointment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the data about a planned appointment
-        int input_car_id = Integer.parseInt(request.getParameter("field_car_id"));
-        int input_service_id = Integer.parseInt(request.getParameter("select_service"));
+        long input_car_id = Long.parseLong(request.getParameter("field_car_id"));
+        long input_service_id = Long.parseLong(request.getParameter("select_service"));
         String input_date = request.getParameter("field_time");
         //HTML: 2022-11-01T12:35
 
@@ -71,8 +71,8 @@ public class Manager extends Employee
     public static void addCurrentAppointment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the data from the hmtl page to create a current appointment
-        int input_planned_appointment = Integer.parseInt(request.getParameter("field_planned_appointment_id"));
-        int input_mechanic_id = Integer.parseInt(request.getParameter("select_mechanic"));
+        long input_planned_appointment = Long.parseLong(request.getParameter("field_planned_appointment_id"));
+        long input_mechanic_id = Long.parseLong(request.getParameter("select_mechanic"));
 
         //using a planned appointment object to get data about the service and car
         PlannedAppointment planned_appointment_obj = DatabaseManager.findById(PlannedAppointment.class,input_planned_appointment);
@@ -90,7 +90,6 @@ public class Manager extends Employee
         DatabaseManager.addToDatabase(current_appointment_obj);
 
         //deleting the planned appointment (because the car is on the service right now)
-        //boolean res = DatabaseManager.deleteFromDatabase(planned_appointment_obj);
         boolean res = DatabaseManager.deleteById(PlannedAppointment.class,planned_appointment_obj.getId());
 
         //redirecting the request to show the results to the user
@@ -119,11 +118,11 @@ public class Manager extends Employee
     public static void addCar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the data about a client's car
-        int input_client_id = Integer.parseInt(request.getParameter("field_client_id"));
+        long input_client_id = Long.parseLong(request.getParameter("field_client_id"));
         String input_plate_number = request.getParameter("field_plate_number");
-        int input_brand_id = Integer.parseInt(request.getParameter("select_brand"));
-        int input_transmission_id = Integer.parseInt(request.getParameter("select_transmission"));
-        int input_fuel_id = Integer.parseInt(request.getParameter("select_fuel"));
+        long input_brand_id = Long.parseLong(request.getParameter("select_brand"));
+        long input_transmission_id = Long.parseLong(request.getParameter("select_transmission"));
+        long input_fuel_id = Long.parseLong(request.getParameter("select_fuel"));
 
         //getting the links to the objects from the database
         Client client_obj = DatabaseManager.findById(Client.class,input_client_id);
