@@ -12,7 +12,7 @@
 <h1>Manager Menu</h1>
 
 <ul>
-    <li><a href="jsp/view_data.jsp">View data</a></li>
+    <li><a href="jsp/view_menu.jsp">View data</a></li>
     <li><a href="jsp/add_client.jsp">Add a new client</a></li>
     <li><a href="jsp/add_car.jsp">Add a new car</a></li>
     <li><a href="jsp/add_planned_appointment.jsp">Add a planned appointment</a></li>

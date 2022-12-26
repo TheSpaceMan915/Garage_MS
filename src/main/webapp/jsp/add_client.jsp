@@ -5,6 +5,7 @@
   <script src = "../scripts/validation_functions.js"></script>
   <style>
     h1 {color: darkmagenta; text-align: center}
+
   </style>
     <title>Add Client</title>
 </head>

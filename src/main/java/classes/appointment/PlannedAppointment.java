@@ -18,7 +18,6 @@ public class PlannedAppointment extends Appointment
     private Timestamp m_appointment_time;
 
 
-
     public PlannedAppointment() { super(); }
 
     public PlannedAppointment(Car car, Service service, Timestamp appointment_time)

@@ -21,7 +21,6 @@ public class Mechanic extends Employee
     private Set<CurrentAppointment> m_set_current_appointments;
 
 
-
     public Set<CurrentAppointment> getCurrentAppointments() { return m_set_current_appointments; }
 
     public void setCurrentAppointments(Set<CurrentAppointment> m_set_current_appointments) { this.m_set_current_appointments = m_set_current_appointments; }
@@ -29,7 +28,7 @@ public class Mechanic extends Employee
     public static void changeServiceState(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the data from the page
-        long input_current_appointment_id = Long.parseLong(request.getParameter("field_current_appointment_id"));
+        long input_current_appointment_id = Long.parseLong(request.getParameter("select_current_appointment"));
         long input_service_state_id = Long.parseLong(request.getParameter("select_service_state"));
 
 

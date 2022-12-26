@@ -47,7 +47,7 @@ public class Manager extends Employee
     public static void addPlannedAppointment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the data about a planned appointment
-        long input_car_id = Long.parseLong(request.getParameter("field_car_id"));
+        long input_car_id = Long.parseLong(request.getParameter("select_car"));
         long input_service_id = Long.parseLong(request.getParameter("select_service"));
         String input_date = request.getParameter("field_time");
         //HTML: 2022-11-01T12:35
@@ -71,11 +71,11 @@ public class Manager extends Employee
     public static void addCurrentAppointment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the data from the hmtl page to create a current appointment
-        long input_planned_appointment = Long.parseLong(request.getParameter("field_planned_appointment_id"));
+        long input_planned_appointment_id = Long.parseLong(request.getParameter("select_planned_appointment"));
         long input_mechanic_id = Long.parseLong(request.getParameter("select_mechanic"));
 
         //using a planned appointment object to get data about the service and car
-        PlannedAppointment planned_appointment_obj = DatabaseManager.findById(PlannedAppointment.class,input_planned_appointment);
+        PlannedAppointment planned_appointment_obj = DatabaseManager.findById(PlannedAppointment.class,input_planned_appointment_id);
         Car car_obj = planned_appointment_obj.getCar();
         Service service_obj = planned_appointment_obj.getService();
 
@@ -118,7 +118,7 @@ public class Manager extends Employee
     public static void addCar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the data about a client's car
-        long input_client_id = Long.parseLong(request.getParameter("field_client_id"));
+        long input_client_id = Long.parseLong(request.getParameter("select_client"));
         String input_plate_number = request.getParameter("field_plate_number");
         long input_brand_id = Long.parseLong(request.getParameter("select_brand"));
         long input_transmission_id = Long.parseLong(request.getParameter("select_transmission"));

@@ -4,7 +4,7 @@ function checkAddCar()
     let notification;
 
     //checking client id field
-    let input_client_id = document.getElementById("client_id").value;
+/*    let input_client_id = document.getElementById("client_id").value;
     if (isNaN(input_client_id) || input_client_id < 1)
     {
         notification = "Enter a number greater than 1";
@@ -13,7 +13,7 @@ function checkAddCar()
     else
     { notification = "The id is valid"; }
 
-    document.getElementById("notification_client_id").innerHTML = notification;
+    document.getElementById("notification_client_id").innerHTML = notification;*/
 
 
     //checking plate number field

@@ -2,7 +2,6 @@ package servlets;
 import classes.appointment.CurrentAppointment;
 import classes.appointment.PlannedAppointment;
 import classes.car.Car;
-import classes.others.DatabaseManager;
 import classes.person.Client;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -251,36 +250,9 @@ public class ServletViewer extends HttpServlet
     {
         response.setContentType("text/html;charset=UTF-8");
         m_writer = response.getWriter();
-/*        String chooser = request.getParameter("list");
-
-        //finish the switcher
-        switch(chooser)
-        {
-            case "clients" ->
-            {
-                List<Client> list_clients = DatabaseManager.getClients();
-                showListClients(list_clients);
-            }
-
-            case "cars" ->
-            {
-                List<Car> list_cars = DatabaseManager.getCars();
-                showListCars(list_cars);
-            }
-
-            case "planned_appointments" ->
-            {
-                List<PlannedAppointment> list_planned_appointments = DatabaseManager.getPlannedAppointments();
-                showListPlannedAppointments(list_planned_appointments);
-            }
-
-            case "current_appointments" ->
-            {
-                List<CurrentAppointment> list_current_appointments = DatabaseManager.getCurrentAppointments();
-                showListCurrentAppointments(list_current_appointments);
-            }
-        }*/
         String choice = request.getParameter("action");
+
+
         switch (choice)
         {
             case "View" -> printList(request,response);

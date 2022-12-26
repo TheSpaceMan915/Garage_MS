@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 
+
 @Entity
 @Table(name = "client", schema = "public", catalog = "postgres")
 public class Client extends Person

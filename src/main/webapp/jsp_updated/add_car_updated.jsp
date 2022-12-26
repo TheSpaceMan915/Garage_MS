@@ -4,24 +4,29 @@
 <%@ page import="classes.car.CarBrand" %>
 <%@ page import="classes.car.Transmission" %>
 <%@ page import="classes.car.Fuel" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 
 <%--Database access--%>
 <%
-    List<Client> list_clients = DatabaseManager.getClients();
-    request.setAttribute("clients", list_clients);
+  List<Client> list_clients = DatabaseManager.getClients();
+  request.setAttribute("clients", list_clients);
 
-    List<CarBrand> list_brands = DatabaseManager.getCarBrands();
-    request.setAttribute("brands", list_brands);
+  List<CarBrand> list_brands = DatabaseManager.getCarBrands();
+  request.setAttribute("brands", list_brands);
 
-    List<Transmission> list_transmissions = DatabaseManager.getTransmissions();
-    request.setAttribute("transmissions", list_transmissions);
+  List<Transmission> list_transmissions = DatabaseManager.getTransmissions();
+  request.setAttribute("transmissions", list_transmissions);
 
-    List<Fuel> list_fuels = DatabaseManager.getFuels();
-    request.setAttribute("fuels", list_fuels);
+  List<Fuel> list_fuels = DatabaseManager.getFuels();
+  request.setAttribute("fuels", list_fuels);
 %>
 
+<%--<sql:query var="clients" dataSource="${dataSource}">SELECT * FROM client;</sql:query>--%>
+<%--<sql:query var="brands" dataSource="${dataSource}">SELECT * FROM car_brand;</sql:query>
+<sql:query var="transmissions" dataSource="${dataSource}">SELECT * FROM transmission;</sql:query>
+<sql:query var="fuels" dataSource="${dataSource}">SELECT * FROM fuel;</sql:query>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +34,7 @@
   <style>
     h1 {color: blueviolet; text-align: center}
   </style>
-  <title>Add a car</title>
+    <title>Add a car</title>
 </head>
 <body>
 

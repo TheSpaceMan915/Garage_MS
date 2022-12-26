@@ -1,5 +1,4 @@
 package classes.car;
-
 import classes.appointment.CurrentAppointment;
 import classes.appointment.PlannedAppointment;
 import classes.person.Client;

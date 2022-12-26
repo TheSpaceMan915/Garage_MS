@@ -9,9 +9,9 @@ import jakarta.persistence.Table;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.List;
+
 
 @Entity
 @Table(name = "accountant", schema = "public", catalog = "postgres")
@@ -20,7 +20,7 @@ public class Accountant extends Employee
     public static void calculateServicesCost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         //getting the client id
-        long input_car_id = Long.parseLong(request.getParameter("field_car_id"));
+        long input_car_id = Long.parseLong(request.getParameter("select_car"));
 
         //getting the list of all current appointments
         List<CurrentAppointment> list_appointments = DatabaseManager.getCurrentAppointments();

@@ -1,8 +1,22 @@
+<%@ page import="classes.appointment.PlannedAppointment" %>
+<%@ page import="java.util.List" %>
+<%@ page import="classes.others.DatabaseManager" %>
+<%@ page import="classes.person.Mechanic" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%--Database access--%>
+<%
+    List<PlannedAppointment> list_planned_appointments = DatabaseManager.getPlannedAppointments();
+    request.setAttribute("planned_appointments",list_planned_appointments);
+
+    List<Mechanic> list_mechanics = DatabaseManager.getMechanics();
+    request.setAttribute("mechanics", list_mechanics);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src = "../scripts/validation_functions.js"></script>
     <style>
         h1 {color: blueviolet; text-align: center}
     </style>
@@ -12,17 +26,21 @@
 
 <h1>Add a current appointment</h1>
 
-<form action="${pageContext.request.contextPath}/ServletController" onsubmit="return checkAddCurrentAppointment()" method = "POST">
-    <label for="planned_appointment_id">Planned appointment id</label><br>
-    <input type="text" id="planned_appointment_id" name="field_planned_appointment_id">
-    <br>
-    <p id="notification_planned_appointment_id"></p>
-    <br>
+<form action="${pageContext.request.contextPath}/ServletController"  method = "POST">
+    <label for="select_planned_appointment_id">Select a planned appointment</label><br>
+    <select name="select_planned_appointment" id="select_planned_appointment_id">
+        <c:forEach var="planned_appointment" items="${planned_appointments}">
+            <option value="${planned_appointment.id}">${planned_appointment.appointmentTime}</option>
+        </c:forEach>
+    </select>
+    <br><br>
 
 <!-- use the select element because there might be more than one mechanic working at the garage -->
     <label for="select_mechanic_id">Select a mechanic</label><br>
     <select name="select_mechanic" id="select_mechanic_id">
-        <option value="1">Rudolf Diesel</option>
+        <c:forEach var="mechanic" items="${mechanics}">
+            <option value="${mechanic.id}">${mechanic.firstName} ${mechanic.secondName}</option>
+        </c:forEach>
     </select>
     <br><br>
 

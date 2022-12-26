@@ -2,6 +2,7 @@
 <head>
     <style>
         h1 {text-align: center}
+        form {text-align: center}
     </style>
     <title>Authentication</title>
 </head>

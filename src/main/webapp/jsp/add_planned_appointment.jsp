@@ -1,8 +1,22 @@
+<%@ page import="classes.others.DatabaseManager" %>
+<%@ page import="classes.car.Car" %>
+<%@ page import="java.util.List" %>
+<%@ page import="classes.service.Service" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%--Database access--%>
+<%
+    List<Car> list_cars = DatabaseManager.getCars();
+    request.setAttribute("cars", list_cars);
+
+    List<Service> list_services = DatabaseManager.getServices();
+    request.setAttribute("services", list_services);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src = "../scripts/validation_functions.js"></script>
     <style>
         h1 {color: darkorchid; text-align: center}
     </style>
@@ -12,28 +26,25 @@
 
 <h1>Add a planned appointment</h1>
 
-<form action="${pageContext.request.contextPath}/ServletController" onsubmit="return checkAddPlannedAppointment()" method = "POST">
-    <label for="car_id">Car id</label><br>
-    <input type="text" id="car_id" name="field_car_id">
-    <br>
-    <p id="notification_car_id"></p>
-    <br>
-
-    <label for="time">Appointment time</label><br>
-    <input type="datetime-local" id="time" name="field_time">
+<form action="${pageContext.request.contextPath}/ServletController" method = "POST">
+    <label for="select_car_id">Select a car</label><br>
+    <select name="select_car" id="select_car_id">
+        <c:forEach var="car" items="${cars}">
+        <option value="${car.id}">${car.plateNumber}</option>
+        </c:forEach>
+    </select>
     <br><br>
 
     <label for="select_service_id">Select a service</label><br>
     <select name="select_service" id="select_service_id">
-        <option value="1">Oil filter change</option>
-        <option value="2">Wiper blades replacement</option>
-        <option value="3">Spark plug replacement</option>
-        <option value="4">Air filter change</option>
-        <option value="5">Oxygen sensor replacement</option>
-        <option value="6">Brakes replacement</option>
-        <option value="7">Transmission inspection</option>
-        <option value="8">Fuel cap tightening</option>
+        <c:forEach var="service" items="${services}">
+            <option value="${service.id}">${service.name}</option>
+        </c:forEach>
     </select>
+    <br><br>
+
+    <label for="time">Appointment time</label><br>
+    <input type="datetime-local" id="time" name="field_time">
     <br><br>
 
     <input type="hidden" name="action" value="Create a planned appointment">

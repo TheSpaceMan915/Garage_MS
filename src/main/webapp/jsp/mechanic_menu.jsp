@@ -12,7 +12,7 @@
 <h1>Mechanic Menu</h1>
 
 <ul>
-    <li><a href="jsp/view_data.jsp">View data</a></li>
+    <li><a href="jsp/view_menu.jsp">View data</a></li>
     <li><a href="jsp/change_service_state.jsp">Change the state of a service</a></li>
 </ul>
 <br><br>

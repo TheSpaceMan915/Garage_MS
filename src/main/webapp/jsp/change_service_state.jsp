@@ -1,7 +1,21 @@
+<%@ page import="classes.others.DatabaseManager" %>
+<%@ page import="classes.service.ServiceState" %>
+<%@ page import="java.util.List" %>
+<%@ page import="classes.appointment.CurrentAppointment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%--Database access--%>
+<%
+    List<ServiceState> list_service_states = DatabaseManager.getServiceStates();
+    request.setAttribute("service_states", list_service_states);
+
+    List<CurrentAppointment> list_current_appointments = DatabaseManager.getCurrentAppointments();
+    request.setAttribute("current_appointments",list_current_appointments);
+%>
+
 <html>
 <head>
-    <script src = "../scripts/validation_functions.js"></script>
     <style>
         h1 {color: darkviolet; text-align: center}
     </style>
@@ -11,17 +25,20 @@
 
 <h1>Change the state of a service</h1>
 
-<form action="${pageContext.request.contextPath}/ServletController" onsubmit="return checkChangeServiceState()" method = "POST">
-    <label for="current_appointment_id">Current appointment id</label><br>
-    <input type="text" id="current_appointment_id" name="field_current_appointment_id">
-    <br>
-    <p id="notification_current_appointment_id"></p>
-    <br>
+<form action="${pageContext.request.contextPath}/ServletController" method = "POST">
+    <label for="select_current_appointment_id">Select a car</label><br>
+    <select name="select_current_appointment" id="select_current_appointment_id">
+        <c:forEach var="current_appointment" items="${current_appointments}">
+            <option value="${current_appointment.id}">${current_appointment.car.plateNumber}</option>
+        </c:forEach>
+    </select>
+    <br><br>
 
     <label for="select_service_state_id">Select a service state</label><br>
     <select name="select_service_state" id="select_service_state_id">
-        <option value="1">In progress</option>
-        <option value="2">Finished</option>
+        <c:forEach var="service_state" items="${service_states}">
+            <option value="${service_state.id}">${service_state.name}</option>
+        </c:forEach>
     </select>
     <br><br>
 

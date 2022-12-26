@@ -12,7 +12,7 @@
 <h1>Accountant Menu</h1>
 
 <ul>
-    <li><a href="jsp/view_data.jsp">View data</a></li>
+    <li><a href="jsp/view_menu.jsp">View data</a></li>
     <li><a href="jsp/calculate_services_cost.jsp">Calculate the cost of services</a></li>
 </ul>
 <br><br>
