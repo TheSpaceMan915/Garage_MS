@@ -1,4 +1,5 @@
 package classes.person;
+import classes.appointment.ArchivedAppointment;
 import classes.appointment.CurrentAppointment;
 import classes.others.DatabaseManager;
 import classes.service.ServiceState;
@@ -20,10 +21,14 @@ public class Mechanic extends Employee
     @OneToMany(mappedBy = "m_mechanic", cascade = CascadeType.ALL)
     private Set<CurrentAppointment> m_set_current_appointments;
 
+    @OneToMany(mappedBy = "m_mechanic", cascade = CascadeType.ALL)
+    private Set<ArchivedAppointment> m_set_archived_appointments;
+
 
     public Set<CurrentAppointment> getCurrentAppointments() { return m_set_current_appointments; }
-
     public void setCurrentAppointments(Set<CurrentAppointment> m_set_current_appointments) { this.m_set_current_appointments = m_set_current_appointments; }
+    public Set<ArchivedAppointment> getSetArchivedAppointments() { return m_set_archived_appointments; }
+    public void setSetArchivedAppointments(Set<ArchivedAppointment> m_set_archived_appointments) { this.m_set_archived_appointments = m_set_archived_appointments; }
 
     public static void changeServiceState(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

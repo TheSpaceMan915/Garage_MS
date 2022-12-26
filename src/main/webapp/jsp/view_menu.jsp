@@ -16,6 +16,7 @@
   <li><a href="view_cars.jsp">Cars</a></li>
   <li><a href="view_planned_appointments.jsp">Planned appointments</a></li>
   <li><a href="view_current_appointments.jsp">Current appointments</a></li>
+  <li><a href="view_archived_appointments.jsp">Archived appointments</a></li>
 
 </ul>
 <br><br>

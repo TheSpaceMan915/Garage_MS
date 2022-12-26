@@ -13,21 +13,8 @@ import java.sql.Timestamp;
 @Table(name = "planned_appointment", schema = "public", catalog = "postgres")
 public class PlannedAppointment extends Appointment
 {
-    @Basic
-    @Column(name = "appointment_time")
-    private Timestamp m_appointment_time;
-
-
     public PlannedAppointment() { super(); }
 
     public PlannedAppointment(Car car, Service service, Timestamp appointment_time)
-    {
-        super(car,service);
-        m_appointment_time = appointment_time;
-    }
-
-    public Timestamp getAppointmentTime() { return m_appointment_time; }
-
-    public void setAppointmentTime(Timestamp appointmentTime) { this.m_appointment_time = appointmentTime; }
-
+    { super(car,service,appointment_time); }
 }

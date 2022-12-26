@@ -1,8 +1,9 @@
 package classes.appointment;
-
 import classes.car.Car;
 import classes.service.Service;
 import jakarta.persistence.*;
+
+import java.sql.Timestamp;
 
 
 @MappedSuperclass
@@ -21,33 +22,27 @@ public abstract class Appointment
     @JoinColumn(name = "service_id", nullable = true)
     private Service m_service;
 
+    @Basic
+    @Column(name = "appointment_time")
+    private Timestamp m_appointment_time;
+
 
     public Appointment() {}
 
-    public Appointment(Car car, Service service)
+    public Appointment(Car car, Service service, Timestamp appointment_time)
     {
         m_car = car;
         m_service = service;
+        m_appointment_time = appointment_time;
     }
 
-    public long getId() {
-        return m_id;
-    }
-
+    public Timestamp getAppointmentTime() { return m_appointment_time; }
+    public void setAppointmentTime(Timestamp m_appointment_time) { this.m_appointment_time = m_appointment_time; }
+    public long getId() {return m_id; }
     public void setId(long id) { this.m_id = id; }
-
-    public Car getCar() {
-        return m_car;
-    }
-
-    public void setCar(Car car) {
-        this.m_car = car;
-    }
-
-    public Service getService() {
-        return m_service;
-    }
-
+    public Car getCar() { return m_car; }
+    public void setCar(Car car) { this.m_car = car; }
+    public Service getService() { return m_service; }
     public void setService(Service service) { this.m_service = service; }
 
     @Override

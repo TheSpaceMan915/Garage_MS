@@ -1,4 +1,5 @@
 package classes.others;
+import classes.appointment.ArchivedAppointment;
 import classes.appointment.CurrentAppointment;
 import classes.appointment.PlannedAppointment;
 import classes.car.Car;
@@ -126,6 +127,17 @@ public class DatabaseManager
         //creating a query and getting results
         Query query = m_manager.createQuery("SELECT a FROM PlannedAppointment a", PlannedAppointment.class);
         List<PlannedAppointment> list = query.getResultList();
+
+        return list;
+    }
+
+
+    //getting archived appointments using JPQL
+    public static List<ArchivedAppointment> getArchivedAppointments()
+    {
+        //creating a query and getting results
+        Query query = m_manager.createQuery("SELECT a FROM ArchivedAppointment a", ArchivedAppointment.class);
+        List<ArchivedAppointment> list = query.getResultList();
 
         return list;
     }

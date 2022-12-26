@@ -1,5 +1,4 @@
 package classes.appointment;
-
 import classes.car.Car;
 import classes.person.Mechanic;
 import classes.service.Service;
@@ -8,6 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
+import java.sql.Timestamp;
+
 
 @Entity
 @Table(name = "current_appointment", schema = "public", catalog = "postgres")
@@ -22,12 +24,11 @@ public class CurrentAppointment extends Appointment
     private Mechanic m_mechanic;
 
 
-
     public CurrentAppointment() { super(); }
 
-    public CurrentAppointment(Car car, Service service, ServiceState service_state, Mechanic mechanic)
+    public CurrentAppointment(Car car, Service service, ServiceState service_state, Mechanic mechanic, Timestamp appointment_time)
     {
-        super(car,service);
+        super(car,service,appointment_time);
         m_service_state = service_state;
         m_mechanic = mechanic;
     }

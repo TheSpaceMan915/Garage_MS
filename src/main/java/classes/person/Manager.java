@@ -78,6 +78,7 @@ public class Manager extends Employee
         PlannedAppointment planned_appointment_obj = DatabaseManager.findById(PlannedAppointment.class,input_planned_appointment_id);
         Car car_obj = planned_appointment_obj.getCar();
         Service service_obj = planned_appointment_obj.getService();
+        Timestamp appointment_time_obj = planned_appointment_obj.getAppointmentTime();
 
         //getting the default service state object
         ServiceState service_state_obj = DatabaseManager.findById(ServiceState.class,1);
@@ -86,7 +87,7 @@ public class Manager extends Employee
         Mechanic mechanic_obj = DatabaseManager.findById(Mechanic.class,input_mechanic_id);
 
         //creating a current appointment object
-        CurrentAppointment current_appointment_obj = new CurrentAppointment(car_obj,service_obj,service_state_obj,mechanic_obj);
+        CurrentAppointment current_appointment_obj = new CurrentAppointment(car_obj,service_obj,service_state_obj,mechanic_obj,appointment_time_obj);
         DatabaseManager.addToDatabase(current_appointment_obj);
 
         //deleting the planned appointment (because the car is on the service right now)

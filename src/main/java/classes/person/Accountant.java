@@ -1,4 +1,5 @@
 package classes.person;
+import classes.appointment.ArchivedAppointment;
 import classes.appointment.CurrentAppointment;
 import classes.car.Car;
 import classes.others.DatabaseManager;
@@ -28,24 +29,28 @@ public class Accountant extends Employee
 
         //calculating the cost
         double sum = 0.0;
-        Car car = null;
-        Service service = null;
-        ServiceState service_state = null;
+        Car car_obj = null;
+        Service service_obj = null;
+        ServiceState service_state_obj = null;
 
         for (CurrentAppointment appointment : list_appointments)
         {
-            car = appointment.getCar();
-            service_state = appointment.getServiceState();
-            service = appointment.getService();
+            car_obj = appointment.getCar();
+            service_state_obj = appointment.getServiceState();
+            service_obj = appointment.getService();
 
-            if (input_car_id == car.getId())
+            if (input_car_id == car_obj.getId())
             {
-                if (service_state.getName().equals("Finished"))
+                if (service_state_obj.getName().equals("Finished"))
                 {
                     //summing the cost of services
-                    sum += service.getPrice();
+                    sum += service_obj.getPrice();
 
-                    //deleting the finished appointment
+                    //archiving the appointment
+                    ArchivedAppointment appointment_archived_obj = new ArchivedAppointment(car_obj,service_obj, appointment.getMechanic(), appointment.getAppointmentTime());
+                    DatabaseManager.addToDatabase(appointment_archived_obj);
+
+                    //deleting the finished current appointment
                     DatabaseManager.deleteById(CurrentAppointment.class,appointment.getId());
                 }
             }

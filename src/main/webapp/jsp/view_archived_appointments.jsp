@@ -1,5 +1,5 @@
 <%@ page import="classes.others.DatabaseManager" %>
-<%@ page import="classes.appointment.CurrentAppointment" %>
+<%@ page import="classes.appointment.ArchivedAppointment" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -26,8 +26,8 @@
 
 <%--Database access--%>
 <%
-    List<CurrentAppointment> list_current_appointments = DatabaseManager.getCurrentAppointments();
-    request.setAttribute("current_appointments",list_current_appointments);
+    List<ArchivedAppointment> list_archived_appointments = DatabaseManager.getArchivedAppointments();
+    request.setAttribute("archived_appointments",list_archived_appointments);
 %>
 
 <html>
@@ -35,11 +35,11 @@
     <style>
         h1 {text-align: center}
     </style>
-    <title>Current appointments</title>
+    <title>Archived appointments</title>
 </head>
 <body>
 
-<h1>Current appointments</h1>
+<h1>Archived appointments</h1>
 <br>
 
 <table class="table table-bordered table-striped">
@@ -47,7 +47,6 @@
     <tr>
         <th scope="col">Id</th>
         <th scope="col">Service</th>
-        <th scope="col">Service state</th>
         <th scope="col">Mechanic</th>
         <th scope="col">Time</th>
         <th scope="col">Car plate number</th>
@@ -55,14 +54,13 @@
     </thead>
     <tbody>
 
-    <c:forEach var="current_appointment" items="${current_appointments}">
+    <c:forEach var="archived_appointment" items="${archived_appointments}">
         <tr>
-            <th scope="row">${current_appointment.id}</th>
-            <td>${current_appointment.service.name}</td>
-            <td>${current_appointment.serviceState.name}</td>
-            <td>${current_appointment.mechanic.firstName} ${current_appointment.mechanic.secondName}</td>
-            <td>${current_appointment.appointmentTime}</td>
-            <td>${current_appointment.car.plateNumber}</td>
+            <th scope="row">${archived_appointment.id}</th>
+            <td>${archived_appointment.service.name}</td>
+            <td>${archived_appointment.mechanic.firstName} ${archived_appointment.mechanic.secondName}</td>
+            <td>${archived_appointment.appointmentTime}</td>
+            <td>${archived_appointment.car.plateNumber}</td>
         </tr>
     </c:forEach>
     </tbody>
