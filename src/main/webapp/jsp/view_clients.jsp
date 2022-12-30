@@ -3,7 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!-- Font Awesome -->
+<%--Old libraries--%>
+<%--<!-- Font Awesome -->
 <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         rel="stylesheet"
@@ -22,6 +23,28 @@
 <script
         type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+></script>--%>
+
+<%--Libraries--%>
+<link
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"
+        rel="stylesheet"
+/>
+<link
+        href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"
+        rel="stylesheet"
+/>
+<script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-3.5.1.js"
+></script>
+<script
+        type="text/javascript"
+        src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"
+></script>
+<script
+        type="text/javascript"
+        src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"
 ></script>
 
 <%--Database access--%>
@@ -32,8 +55,14 @@
 
 <html>
 <head>
+    <script>
+        $(document).ready(function () {
+            $('#table_clients').DataTable();
+        });
+    </script>
     <style>
         h1 {text-align: center}
+        table {width: 100%}
     </style>
     <title>Clients</title>
 </head>
@@ -42,7 +71,7 @@
 <h1>Clients</h1>
 <br>
 
-<table class="table table-bordered table-striped">
+<table id="table_clients" class="table table-bordered table-striped">
     <thead>
     <tr>
         <th scope="col">Id</th>

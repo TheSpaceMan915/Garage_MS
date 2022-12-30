@@ -3,25 +3,26 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!-- Font Awesome -->
+<%--Libraries--%>
 <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"
         rel="stylesheet"
 />
-<!-- Google Fonts -->
 <link
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"
         rel="stylesheet"
 />
-<!-- MDB -->
-<link
-        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css"
-        rel="stylesheet"
-/>
-<!-- MDB -->
 <script
         type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+        src="https://code.jquery.com/jquery-3.5.1.js"
+></script>
+<script
+        type="text/javascript"
+        src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"
+></script>
+<script
+        type="text/javascript"
+        src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"
 ></script>
 
 <%--Database access--%>
@@ -32,8 +33,14 @@
 
 <html>
 <head>
+    <script>
+        $(document).ready(function () {
+            $('#table_planned_appointments').DataTable();
+        });
+    </script>
     <style>
         h1 {text-align: center}
+        table {width: 100%}
     </style>
     <title>Planned appointments</title>
 </head>
@@ -42,7 +49,7 @@
 <h1>Planned appointments</h1>
 <br>
 
-<table class="table table-bordered table-striped">
+<table id="table_planned_appointments" class="table table-bordered table-striped">
     <thead>
     <tr>
         <th scope="col">Id</th>
