@@ -28,7 +28,7 @@
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:postgresql://192.168.1.65:5432/postgres"/>
             <property name="hibernate.connection.username" value="postgres"/>
-            <property name="hibernate.connection.password" value="954!BindDom"/>
+            <property name="hibernate.connection.password" value="7421Crackers"/>
         </properties>
     </persistence-unit>
 </persistence>
