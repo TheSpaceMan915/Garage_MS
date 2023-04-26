@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src = "../scripts/validation_functions.js"></script>
+  <script src = "../../scripts/validation_functions.js"></script>
   <style>
     h1 {color: blueviolet; text-align: center}
   </style>

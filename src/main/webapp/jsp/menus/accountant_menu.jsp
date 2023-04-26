@@ -5,15 +5,15 @@
     <style>
         h1 {color: orangered; text-align: center}
     </style>
-    <title>Mechanic menu</title>
+    <title>Accountant menu</title>
 </head>
 <body>
 
-<h1>Mechanic Menu</h1>
+<h1>Accountant Menu</h1>
 
 <ul>
-    <li><a href="jsp/view_menu.jsp">View data</a></li>
-    <li><a href="jsp/change_service_state.jsp">Change the state of a service</a></li>
+    <li><a href="jsp/menus/view_menu.jsp">View data</a></li>
+    <li><a href="jsp/others/calculate_services_cost.jsp">Calculate the cost of services</a></li>
 </ul>
 <br><br>
 

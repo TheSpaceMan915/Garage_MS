@@ -105,19 +105,19 @@ public class ServletAuthenticator extends HttpServlet
         if (authenticateMechanic(input_login,password_hashcode))
         {
             //redirecting the request to the mechanic's menu
-            request.getRequestDispatcher("jsp/mechanic_menu.jsp").forward(request,response);
+            request.getRequestDispatcher("jsp/menus/mechanic_menu.jsp").forward(request,response);
             log("The mechanic has been authenticated");
         }
         else if (authenticateManager(input_login,password_hashcode))
         {
             //redirecting the request to the manager's menu
-            request.getRequestDispatcher("jsp/manager_menu.jsp").forward(request,response);
+            request.getRequestDispatcher("jsp/menus/manager_menu.jsp").forward(request,response);
             log("The manager has been authenticated");
         }
         else if (authenticateAccountant(input_login,password_hashcode))
         {
             //redirecting the request to the accountant's menu
-            request.getRequestDispatcher("jsp/accountant_menu.jsp").forward(request,response);
+            request.getRequestDispatcher("jsp/menus/accountant_menu.jsp").forward(request,response);
             log("The accountant has been authenticated");
         }
         else
